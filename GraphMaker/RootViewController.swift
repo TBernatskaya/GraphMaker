@@ -18,10 +18,10 @@ class RootViewController: UIViewController {
         }
     }
     
-    var _modelController: ModelController? = nil
-    var modelController: ModelController {
+    var _modelController: PageModelController? = nil
+    var modelController: PageModelController {
         if _modelController == nil {
-            _modelController = ModelController()
+            _modelController = PageModelController()
         }
         return _modelController!
     }
@@ -34,7 +34,7 @@ class RootViewController: UIViewController {
     func setupPageViewController() {
         guard
             let pageViewController = self.pageViewController,
-            let startingViewController: DataViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)
+            let startingViewController: GraphViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)
             else { return }
         
         let viewControllers = [startingViewController]

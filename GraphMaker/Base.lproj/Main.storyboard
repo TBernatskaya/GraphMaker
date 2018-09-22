@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-101" y="-243"/>
         </scene>
-        <!--Data View Controller-->
+        <!--Graph View Controller-->
         <scene sceneID="snT-py-3hH">
             <objects>
-                <viewController storyboardIdentifier="DataViewController" modalTransitionStyle="flipHorizontal" id="S4R-Ja-viH" customClass="DataViewController" customModule="GraphMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GraphViewController" modalTransitionStyle="flipHorizontal" id="S4R-Ja-viH" customClass="GraphViewController" customModule="GraphMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZwX-cT-FIQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
