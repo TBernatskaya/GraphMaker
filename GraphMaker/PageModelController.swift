@@ -15,7 +15,10 @@ class PageModelController: NSObject {
     var mockData: [GraphDataModel] {
         let lineGraph = GraphDataModel.init(graphType: .line,
                                             values: [3, 7, 4, 6, 8, 7])
-        return [lineGraph]
+        
+        let lineGraph2 = GraphDataModel.init(graphType: .line,
+                                            values: [7, 3, 6, 4, 9, 6])
+        return [lineGraph, lineGraph2]
     }
 
     override init() {
@@ -75,7 +78,7 @@ extension PageModelController: UIPageViewControllerDataSource {
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let presentedVC = pageViewController.presentedViewController as? GraphViewController else { return 5 }
+        guard let presentedVC = pageViewController.viewControllers?.last as? GraphViewController else { return NSNotFound }
         return self.indexOfViewController(presentedVC)
     }
 }

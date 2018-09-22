@@ -8,12 +8,10 @@
 
 import UIKit
 
-@IBDesignable class GraphView: UIView {
-    @IBInspectable var startColor: UIColor = .red
-    @IBInspectable var endColor: UIColor = .green
-    
+class GraphView: UIView {
     var graphPoints: [Int] = []
     
+    let cgColors = [UIColor.green.cgColor, UIColor.blue.cgColor]
     let colorLocations: [CGFloat] = [0.0, 1.0]
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     let sideMargin: CGFloat = 20
@@ -38,7 +36,6 @@ import UIKit
         
         let startPoint = CGPoint.zero
         let endPoint = CGPoint(x: 0, y: bounds.height)
-        let cgColors = [startColor.cgColor, endColor.cgColor]
         
         let gradient = CGGradient(colorsSpace: colorSpace,
                                   colors: cgColors as CFArray,
@@ -58,7 +55,6 @@ import UIKit
         
         let width = rect.width
         let height = rect.height
-        let cgColors = [startColor.cgColor, endColor.cgColor]
         let graphPath = UIBezierPath()
         let graphHeight = height - topMargin - bottomMargin
         let graphWidth = width - sideMargin * 2

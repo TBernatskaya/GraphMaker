@@ -11,7 +11,7 @@ import UIKit
 class GraphViewController: UIViewController {
 
     @IBOutlet weak var dataLabel: UILabel!
-    @IBOutlet weak var graphView: GraphView!
+    @IBOutlet weak var graphContainerView: UIView!
     
     var graphData: GraphDataModel?
     
@@ -23,9 +23,15 @@ class GraphViewController: UIViewController {
 
     func updateView() {
         guard let graphData = graphData else { return }
-        
         dataLabel.text = graphData.graphType.rawValue + " graph"
-        graphView.graphPoints = graphData.values
+        
+        switch graphData.graphType {
+        case .line:
+            let lineGraphView = GraphView.init(frame: graphContainerView.bounds)
+            lineGraphView.backgroundColor = .clear
+            lineGraphView.graphPoints = graphData.values
+            graphContainerView.addSubview(lineGraphView)
+        }
     }
 }
 
