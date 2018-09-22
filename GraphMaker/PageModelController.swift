@@ -14,11 +14,7 @@ class PageModelController: NSObject {
     
     var mockData: [GraphDataModel] {
         let lineGraph = GraphDataModel.init(graphType: .line,
-                                            points: [CGPoint(x: 20, y: 50),
-                                                     CGPoint(x: 40, y: 55),
-                                                     CGPoint(x: 60, y: 60),
-                                                     CGPoint(x: 80, y: 70),
-                                                     CGPoint(x: 100, y: 50)])
+                                            values: [50, 55, 60, 70, 55])
         return [lineGraph]
     }
 

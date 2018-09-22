@@ -6,5 +6,5 @@ enum GraphType: String {
 
 struct GraphDataModel: Equatable {
     var graphType: GraphType
-    var points: [CGPoint]
+    var values: [Int]
 }

@@ -12,9 +12,16 @@ import UIKit
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
     
+    var graphPoints: [Int] = []
+    
+    let sideMargin: CGFloat = 20
+    let topMargin: CGFloat = 150.0
+    let bottomMargin: CGFloat = 40.0
+    
     override func draw(_ rect: CGRect) {
         roundCorners(for: rect)
         addGradient()
+        addLineGraph(for: rect)
     }
     
     fileprivate func roundCorners(for rect: CGRect) {
@@ -41,5 +48,36 @@ import UIKit
                                    start: startPoint,
                                    end: endPoint,
                                    options: [])
+    }
+    
+    fileprivate func addLineGraph(for rect: CGRect) {
+        let width = rect.width
+        let height = rect.height
+        
+        let graphWidth = width - sideMargin * 2
+        let columnXPoint = { (column: Int) -> CGFloat in
+            let spacing = graphWidth / CGFloat(self.graphPoints.count - 1)
+            return CGFloat(column) * spacing + self.sideMargin + 2
+        }
+        
+        let graphHeight = height - topMargin - bottomMargin
+        let maxValue = graphPoints.max()!
+        let columnYPoint = { (graphPoint: Int) -> CGFloat in
+            let y = CGFloat(graphPoint) / CGFloat(maxValue) * graphHeight
+            return graphHeight + self.topMargin - y
+        }
+        
+        //UIColor.white.setFill()
+        UIColor.white.setStroke()
+        
+        let graphPath = UIBezierPath()
+        graphPath.move(to: CGPoint(x: columnXPoint(0), y: columnYPoint(graphPoints[0])))
+        
+        for i in 1..<graphPoints.count {
+            let nextPoint = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
+            graphPath.addLine(to: nextPoint)
+        }
+        
+        graphPath.stroke()
     }
 }

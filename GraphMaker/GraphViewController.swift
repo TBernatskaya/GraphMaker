@@ -11,7 +11,7 @@ import UIKit
 class GraphViewController: UIViewController {
 
     @IBOutlet weak var dataLabel: UILabel!
-    @IBOutlet weak var graphView: UIView!
+    @IBOutlet weak var graphView: GraphView!
     
     var graphData: GraphDataModel?
     
@@ -25,6 +25,7 @@ class GraphViewController: UIViewController {
         guard let graphData = graphData else { return }
         
         dataLabel.text = graphData.graphType.rawValue + " graph"
+        graphView.graphPoints = graphData.values
     }
 }
 
