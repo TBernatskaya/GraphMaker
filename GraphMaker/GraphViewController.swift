@@ -11,11 +11,13 @@ import UIKit
 class GraphViewController: UIViewController {
 
     @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var graphView: UIView!
     
     var graphData: GraphDataModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateView()
     }
 
