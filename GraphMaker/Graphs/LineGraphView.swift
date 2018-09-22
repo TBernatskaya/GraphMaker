@@ -1,5 +1,5 @@
 //
-//  GraphView.swift
+//  LineGraphView.swift
 //  GraphMaker
 //
 //  Created by Tatiana Bernatskaya on 2018-09-22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GraphView: UIView {
+class LineGraphView: UIView {
     var graphPoints: [Int] = []
     
     let cgColors = [UIColor.green.cgColor, UIColor.blue.cgColor]

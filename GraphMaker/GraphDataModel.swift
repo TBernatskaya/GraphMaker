@@ -1,7 +1,8 @@
 import UIKit
 
 enum GraphType: String {
-    case line = "Line"
+    case line = "Line graph"
+    case pie = "Pie chart"
 }
 
 struct GraphDataModel: Equatable {

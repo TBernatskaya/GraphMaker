@@ -13,12 +13,16 @@ class PageModelController: NSObject {
     var pageData: [GraphDataModel] = []
     
     var mockData: [GraphDataModel] {
-        let lineGraph = GraphDataModel.init(graphType: .line,
+        let lineGraph1 = GraphDataModel.init(graphType: .line,
                                             values: [3, 7, 4, 6, 8, 7])
         
         let lineGraph2 = GraphDataModel.init(graphType: .line,
                                             values: [7, 3, 6, 4, 9, 6])
-        return [lineGraph, lineGraph2]
+        
+        let pieChart = GraphDataModel.init(graphType: .pie,
+                                           values: [7, 5, 3, 4, 6])
+        
+        return [pieChart, lineGraph1, lineGraph2]
     }
 
     override init() {

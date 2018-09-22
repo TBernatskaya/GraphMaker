@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D81A57572156490100DE7E93 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A57562156490100DE7E93 /* GraphView.swift */; };
+		D81A57572156490100DE7E93 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A57562156490100DE7E93 /* LineGraphView.swift */; };
+		D81A57592156C4EC00DE7E93 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A57582156C4EC00DE7E93 /* PieChartView.swift */; };
 		D835A4A8215624E800CCEB4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835A4A7215624E800CCEB4D /* AppDelegate.swift */; };
 		D835A4AA215624E800CCEB4D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835A4A9215624E800CCEB4D /* RootViewController.swift */; };
 		D835A4AC215624E800CCEB4D /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835A4AB215624E800CCEB4D /* GraphViewController.swift */; };
@@ -30,7 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D81A57562156490100DE7E93 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		D81A57562156490100DE7E93 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		D81A57582156C4EC00DE7E93 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		D835A4A4215624E800CCEB4D /* GraphMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D835A4A7215624E800CCEB4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D835A4A9215624E800CCEB4D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81A575A2156C57A00DE7E93 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				D81A57582156C4EC00DE7E93 /* PieChartView.swift */,
+				D81A57562156490100DE7E93 /* LineGraphView.swift */,
+			);
+			path = Graphs;
+			sourceTree = "<group>";
+		};
 		D835A49B215624E800CCEB4D = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +101,7 @@
 				D835A4AB215624E800CCEB4D /* GraphViewController.swift */,
 				D835A4AD215624E800CCEB4D /* PageModelController.swift */,
 				D86D80FE21563A380046B5C4 /* GraphDataModel.swift */,
-				D81A57562156490100DE7E93 /* GraphView.swift */,
+				D81A575A2156C57A00DE7E93 /* Graphs */,
 				D835A4AF215624E800CCEB4D /* Main.storyboard */,
 				D835A4B2215624EA00CCEB4D /* Assets.xcassets */,
 				D835A4B4215624EA00CCEB4D /* LaunchScreen.storyboard */,
@@ -212,9 +223,10 @@
 				D86D80FF21563A380046B5C4 /* GraphDataModel.swift in Sources */,
 				D835A4AA215624E800CCEB4D /* RootViewController.swift in Sources */,
 				D835A4AE215624E800CCEB4D /* PageModelController.swift in Sources */,
+				D81A57592156C4EC00DE7E93 /* PieChartView.swift in Sources */,
 				D835A4AC215624E800CCEB4D /* GraphViewController.swift in Sources */,
 				D835A4A8215624E800CCEB4D /* AppDelegate.swift in Sources */,
-				D81A57572156490100DE7E93 /* GraphView.swift in Sources */,
+				D81A57572156490100DE7E93 /* LineGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
