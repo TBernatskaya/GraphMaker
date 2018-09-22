@@ -46,7 +46,7 @@ class RootViewController: UIViewController {
         
         var pageViewRect = self.view.bounds
         if UIDevice.current.userInterfaceIdiom == .pad {
-            pageViewRect = pageViewRect.insetBy(dx: 40.0, dy: 40.0)
+            pageViewRect = pageViewRect.insetBy(dx: 80.0, dy: 80.0)
         }
         pageViewController.view.frame = pageViewRect
         pageViewController.didMove(toParent: self)

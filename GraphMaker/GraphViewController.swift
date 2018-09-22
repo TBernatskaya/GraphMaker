@@ -22,7 +22,7 @@ class GraphViewController: UIViewController {
     func updateView() {
         guard let graphData = graphData else { return }
         
-        dataLabel.text = graphData.graphType.rawValue
+        dataLabel.text = graphData.graphType.rawValue + " graph"
     }
 }
 
