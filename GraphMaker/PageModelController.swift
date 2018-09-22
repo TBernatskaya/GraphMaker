@@ -20,7 +20,7 @@ class PageModelController: NSObject {
                                             values: [7, 3, 6, 4, 9, 6])
         
         let pieChart = GraphDataModel.init(graphType: .pie,
-                                           values: [7, 5, 3, 4, 6])
+                                           values: [10, 5, 3, 8, 6])
         
         return [pieChart, lineGraph1, lineGraph2]
     }

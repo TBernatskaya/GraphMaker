@@ -34,7 +34,7 @@ class GraphViewController: UIViewController {
         case .pie:
             let pieChartView = PieChartView.init(frame: graphContainerView.bounds)
             pieChartView.backgroundColor = .clear
-            pieChartView.graphPoints = graphData.values
+            pieChartView.chartValues = graphData.values
             graphContainerView.addSubview(pieChartView)
         }
     }
