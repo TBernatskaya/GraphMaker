@@ -13,12 +13,18 @@ import UIKit
     @IBInspectable var endColor: UIColor = .green
     
     override func draw(_ rect: CGRect) {
-        
+        roundCorners(for: rect)
+        addGradient()
+    }
+    
+    fileprivate func roundCorners(for rect: CGRect) {
         let path = UIBezierPath(roundedRect: rect,
                                 byRoundingCorners: .allCorners,
                                 cornerRadii: CGSize(width: 8.0, height: 8.0))
         path.addClip()
-        
+    }
+    
+    fileprivate func addGradient() {
         let context = UIGraphicsGetCurrentContext()!
         let colors = [startColor.cgColor, endColor.cgColor]
         let colorSpace = CGColorSpaceCreateDeviceRGB()
