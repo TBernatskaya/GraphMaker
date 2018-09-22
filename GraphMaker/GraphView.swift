@@ -14,6 +14,8 @@ import UIKit
     
     var graphPoints: [Int] = []
     
+    let colorLocations: [CGFloat] = [0.0, 1.0]
+    let colorSpace = CGColorSpaceCreateDeviceRGB()
     let sideMargin: CGFloat = 20
     let topMargin: CGFloat = 150.0
     let bottomMargin: CGFloat = 40.0
@@ -32,17 +34,15 @@ import UIKit
     }
     
     fileprivate func addGradient() {
-        let context = UIGraphicsGetCurrentContext()!
-        let colors = [startColor.cgColor, endColor.cgColor]
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colorLocations: [CGFloat] = [0.0, 1.0]
-        
-        let gradient = CGGradient(colorsSpace: colorSpace,
-                                  colors: colors as CFArray,
-                                  locations: colorLocations)!
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         
         let startPoint = CGPoint.zero
         let endPoint = CGPoint(x: 0, y: bounds.height)
+        let cgColors = [startColor.cgColor, endColor.cgColor]
+        
+        let gradient = CGGradient(colorsSpace: colorSpace,
+                                  colors: cgColors as CFArray,
+                                  locations: colorLocations)!
         
         context.drawLinearGradient(gradient,
                                    start: startPoint,
@@ -51,26 +51,31 @@ import UIKit
     }
     
     fileprivate func addLineGraph(for rect: CGRect) {
+        guard
+            let context = UIGraphicsGetCurrentContext(),
+            let maxValue = graphPoints.max()
+        else { return }
+        
         let width = rect.width
         let height = rect.height
-        
+        let cgColors = [startColor.cgColor, endColor.cgColor]
+        let graphPath = UIBezierPath()
+        let graphHeight = height - topMargin - bottomMargin
         let graphWidth = width - sideMargin * 2
+        
         let columnXPoint = { (column: Int) -> CGFloat in
             let spacing = graphWidth / CGFloat(self.graphPoints.count - 1)
             return CGFloat(column) * spacing + self.sideMargin + 2
         }
         
-        let graphHeight = height - topMargin - bottomMargin
-        let maxValue = graphPoints.max()!
         let columnYPoint = { (graphPoint: Int) -> CGFloat in
             let y = CGFloat(graphPoint) / CGFloat(maxValue) * graphHeight
             return graphHeight + self.topMargin - y
         }
         
-        //UIColor.white.setFill()
+        UIColor.white.setFill()
         UIColor.white.setStroke()
         
-        let graphPath = UIBezierPath()
         graphPath.move(to: CGPoint(x: columnXPoint(0), y: columnYPoint(graphPoints[0])))
         
         for i in 1..<graphPoints.count {
@@ -78,6 +83,22 @@ import UIKit
             graphPath.addLine(to: nextPoint)
         }
         
-        graphPath.stroke()
+        let clippingPath = graphPath.copy() as! UIBezierPath
+        
+        clippingPath.addLine(to: CGPoint(x: columnXPoint(graphPoints.count - 1), y:height))
+        clippingPath.addLine(to: CGPoint(x: columnXPoint(0), y:height))
+        clippingPath.close()
+        
+        clippingPath.addClip()
+        
+        let highestYPoint = columnYPoint(maxValue)
+        let graphStartPoint = CGPoint(x: sideMargin, y: highestYPoint)
+        let graphEndPoint = CGPoint(x: sideMargin, y: bounds.height)
+        
+        let gradient = CGGradient(colorsSpace: colorSpace,
+                                  colors: cgColors as CFArray,
+                                  locations: colorLocations)!
+        
+        context.drawLinearGradient(gradient, start: graphStartPoint, end: graphEndPoint, options: [])
     }
 }

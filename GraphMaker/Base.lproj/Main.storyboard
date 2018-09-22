@@ -42,7 +42,7 @@
                                 <rect key="frame" x="20" y="53.5" width="335" height="599.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZx-h3-188" customClass="GraphView" customModule="GraphMaker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="599.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="529.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -59,7 +59,7 @@
                                     <constraint firstItem="cZx-h3-188" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" id="9YU-lZ-1F9"/>
                                     <constraint firstItem="cZx-h3-188" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" id="UQh-Tc-Hpx"/>
                                     <constraint firstAttribute="trailing" secondItem="cZx-h3-188" secondAttribute="trailing" id="V5H-Rv-k3C"/>
-                                    <constraint firstAttribute="bottom" secondItem="cZx-h3-188" secondAttribute="bottom" id="xn3-ov-uBM"/>
+                                    <constraint firstAttribute="bottom" secondItem="cZx-h3-188" secondAttribute="bottom" constant="70" id="xn3-ov-uBM"/>
                                 </constraints>
                             </view>
                         </subviews>

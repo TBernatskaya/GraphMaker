@@ -14,7 +14,7 @@ class PageModelController: NSObject {
     
     var mockData: [GraphDataModel] {
         let lineGraph = GraphDataModel.init(graphType: .line,
-                                            values: [50, 55, 60, 70, 55])
+                                            values: [3, 7, 4, 6, 8, 7])
         return [lineGraph]
     }
 
