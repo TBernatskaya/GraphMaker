@@ -35,7 +35,7 @@ class PieChartView: UIView {
                                       clockwise: true)
         
         circlePath.lineWidth = sectorWidth
-        UIColor.blue.setStroke()
+        UIColor.lightGray.setStroke()
         circlePath.stroke()
     }
     
@@ -44,9 +44,9 @@ class PieChartView: UIView {
         let sumOfChartValues = CGFloat(chartValues.reduce(0, +))
         let angles: [CGFloat] = chartValues.compactMap{ 2 * .pi  * CGFloat($0)/sumOfChartValues }
         var startAngle: CGFloat = 0
+        var paths: [UIBezierPath] = []
         
         for (index, angle) in angles.enumerated() {
-
             if index != 0 {
                 startAngle += angles[index - 1]
             }
@@ -58,8 +58,30 @@ class PieChartView: UIView {
                                           clockwise: true)
             
             circlePath.lineWidth = sectorWidth
-            UIColor.random.setStroke()
             circlePath.stroke()
+            paths.append(circlePath)
+        }
+        
+        let layers = paths.map { path -> CAShapeLayer in
+            let layer = CAShapeLayer()
+            layer.path = path.cgPath
+            layer.strokeEnd = 0
+            layer.strokeColor = UIColor.random.cgColor
+            layer.lineWidth = sectorWidth
+            layer.fillColor = UIColor.clear.cgColor
+            return layer
+        }
+        
+        layers.enumerated().forEach { offset, layer in
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.toValue = 1
+            animation.duration = 2
+            animation.fillMode = CAMediaTimingFillMode.forwards
+            animation.repeatCount = 1
+            animation.isRemovedOnCompletion = false
+            
+            layer.add(animation, forKey: "group")
+            self.layer.addSublayer(layer)
         }
     }
 }
