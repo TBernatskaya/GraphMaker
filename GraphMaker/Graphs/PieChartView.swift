@@ -72,6 +72,16 @@ class PieChartView: UIView {
             return layer
         }
         
+        /*let textLayers = paths.map { path -> CATextLayer in
+            let textlayer = CATextLayer()
+            textlayer.string = "BLAH"
+            textlayer.font = UIFont(name: "Helvetica-Bold", size: 8)
+            textlayer.isWrapped = true
+            textlayer.frame = path.bounds
+            
+            return textlayer
+        }*/
+        
         layers.enumerated().forEach { offset, layer in
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.toValue = 1
@@ -83,5 +93,9 @@ class PieChartView: UIView {
             layer.add(animation, forKey: "group")
             self.layer.addSublayer(layer)
         }
+        
+       /* textLayers.enumerated().forEach { offset, layer in
+            self.layer.addSublayer(layer)
+        }*/
     }
 }
