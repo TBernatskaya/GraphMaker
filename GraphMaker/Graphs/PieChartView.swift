@@ -50,6 +50,7 @@ class PieChartView: UIView {
             if index != 0 {
                 startAngle += angles[index - 1]
             }
+            let midAngle = (startAngle*2 + angle)/2
             
             let circlePath = UIBezierPath(arcCenter: centerPosition(for: rect),
                                           radius: circleRadius(for: rect),
@@ -59,6 +60,20 @@ class PieChartView: UIView {
             
             circlePath.lineWidth = sectorWidth
             circlePath.stroke()
+            
+            let textlayer = CATextLayer()
+            textlayer.string = String(chartValues[index])
+            textlayer.font = UIFont(name: "Helveticа", size: 6)
+            
+            let textFrame = CGRect.init(x: centerPosition(for: rect).x + cos(midAngle)*150,
+                                        y: centerPosition(for: rect).y + sin(midAngle)*150,
+                                        width: 20,
+                                        height: 20)
+                
+            textlayer.frame = textFrame
+            textlayer.anchorPoint = CGPoint(x: 0.5, y: 0.8)
+            
+            self.layer.addSublayer(textlayer)
             paths.append(circlePath)
         }
         
